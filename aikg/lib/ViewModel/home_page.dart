@@ -36,12 +36,37 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
+      drawer: const Drawer(
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'My EDU Dashboard',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                ),
+                SizedBox(height: 24),
+                ListTile(leading: Icon(Icons.home_outlined), title: Text('Home')),
+                ListTile(leading: Icon(Icons.file_upload_outlined), title: Text('Upload')),
+                ListTile(leading: Icon(Icons.chat_bubble_outline), title: Text('Chat')),
+                ListTile(leading: Icon(Icons.quiz_outlined), title: Text('Quizzes')),
+                ListTile(leading: Icon(Icons.show_chart), title: Text('Progress')),
+                ListTile(leading: Icon(Icons.pie_chart_outline), title: Text('Analysis')),
+              ],
+            ),
+          ),
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.5,
-        leading: IconButton(
-          icon: const Icon(Icons.menu, color: Colors.black87),
-          onPressed: () => Scaffold.of(context).openDrawer(),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu, color: Colors.black87),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
         ),
         title: const Text(
           'My EDU Dashboard',
